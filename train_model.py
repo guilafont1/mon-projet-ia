@@ -28,3 +28,17 @@ model.fit(X_train, y_train)
 joblib.dump(model, "spam_classifier.joblib")
 
 print("Modèle entraîné et sauvegardé.")
+
+
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+# Prédictions sur les données de test
+y_pred = model.predict(X_test)
+
+# Affichage des scores
+print("\n✅ Évaluation du modèle :\n")
+print("Accuracy :", accuracy_score(y_test, y_pred))
+print("\nClassification Report :")
+print(classification_report(y_test, y_pred, target_names=["Ham", "Spam"]))
+print("\nMatrice de confusion :")
+print(confusion_matrix(y_test, y_pred))
